@@ -106,7 +106,7 @@ function setupLogin() {
         emailInput.required = false;
     }
 
-    const ORIGINAL_PASSWORD = "260607";
+    const ORIGINAL_PASSWORD = "98521";
 
     // نمنع إضافة event listener أكثر من مرة
     if (form.dataset.loginReady === "true") return;
