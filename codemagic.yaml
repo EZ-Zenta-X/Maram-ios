@@ -6,7 +6,7 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
-      xcode: latest
+      xcode: 26.5
       node: 22
 
     scripts:
