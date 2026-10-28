@@ -1,7 +1,7 @@
 
 workflows:
   maram-ios:
-    name: Maram iOS Build
+    name: MARAM iOS Build
     max_build_duration: 60
     instance_type: mac_mini_m2
 
@@ -27,6 +27,15 @@ workflows:
             CODE_SIGNING_ALLOWED=NO \
             build
 
+      - name: Package unsigned IPA
+        script: |
+          APP_PATH="build/ios/Build/Products/Debug-iphoneos/App.app"
+          test -d "$APP_PATH" || { echo "ERROR: App.app was not produced"; exit 1; }
+          mkdir -p build/ios/ipa/Payload
+          cp -R "$APP_PATH" build/ios/ipa/Payload/App.app
+          cd build/ios/ipa
+          /usr/bin/zip -qry MARAM-unsigned.ipa Payload
+
     artifacts:
-      - build/ios/Build/Products/Debug-iphoneos/*.app
+      - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
