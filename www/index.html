@@ -1,0 +1,320 @@
+By Zentawi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayoub Saadaoui</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- MARAM ACCESS TERMINAL -->
+    <section id="login-screen" class="login-screen">
+        <div class="login-container">
+
+            <div class="terminal-heading">ZENTA // MARAM ACCESS TERMINAL</div>
+            <div class="system-locked">● SYSTEM LOCKED</div>
+            <div class="secure-protocol">[ SECURE ACCESS PROTOCOL ]</div>
+
+            <h1 class="maram-title">MARAM</h1>
+
+            <p class="identity-required">
+                IDENTITY VERIFICATION REQUIRED
+            </p>
+
+            <form id="login-form">
+                <input
+                    type="text"
+                    id="login-email"
+                    placeholder="EMAIL"
+                    autocomplete="username"
+                >
+
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="PASSWORD"
+                    autocomplete="current-password"
+                >
+
+                <button type="submit" id="authenticate-button">
+                    [ AUTHENTICATE ]
+                </button>
+            </form>
+
+            <p class="authorized-users">
+                AUTHORIZED USERS ONLY // LOCAL SESSION
+            </p>
+
+            <div class="access-status">
+                ACCESS CONTROL NODE : ACTIVE | WAITING FOR CREDENTIALS
+            </div>
+
+            <p id="login-error" class="login-error" hidden>
+                ACCESS DENIED
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ACCESS DENIED SCREEN -->
+    <section id="denied-screen" class="denied-screen" hidden>
+        <h1>ACCESS DENIED</h1>
+        <p>UNAUTHORIZED ACCESS DETECTED</p>
+        <button id="return-login-button">RETURN</button>
+    </section>
+
+
+    <!-- MAIN MARAM APPLICATION -->
+    <main id="maram-app" class="maram-app" hidden>
+
+        <header class="main-header">
+            <h1>AYOUB SAADAOUI</h1>
+        </header>
+
+        <div class="main-layout">
+
+            <!-- LEFT PANEL -->
+            <aside class="side-panel left-panel">
+
+                <button id="personal-info-button">
+                    Info Personnels
+                </button>
+
+                <button id="saved-projects-button">
+                    Project Saved
+                </button>
+
+                <button id="click-test-button">
+                    Click Test
+                </button>
+
+                <button id="montage-button">
+                    MONTAGE
+                </button>
+
+            </aside>
+
+
+            <!-- CENTER PANEL -->
+            <section id="home-page" class="home-page">
+
+
+            <div class="background-video-container">
+                <video
+                    id="background-video"
+                    src="background.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                ></video>
+            </div>
+
+            <div class="girl-video-container">
+                <video
+                    id="girl-video"
+                    src="girl.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                ></video>
+            </div>
+
+            <h2>Name : Maram Saadaoui</h2>
+
+            <p id="system-status">SYSTEM ONLINE</p>
+
+            <button id="voice-toggle-button">
+                Voice Enabled
+            </button>
+
+
+            </section>
+
+
+            <!-- RIGHT PANEL: CHAT -->
+            <aside class="chat-panel">
+
+                <h2>CHAT</h2>
+
+                <div id="chat-messages" class="chat-messages"></div>
+
+                <form id="chat-form" class="chat-form">
+                    <input
+                        type="text"
+                        id="chat-input"
+                        placeholder="Type a message..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">SEND</button>
+                </form>
+
+            </aside>
+
+        </div>
+
+
+        <!-- PERSONAL CONTACTS PAGE -->
+        <section id="contacts-page" class="content-page" hidden>
+
+            <div class="page-header">
+                <h2>Info Personnels</h2>
+                <button class="back-button" data-back-home>← BACK</button>
+            </div>
+
+            <div id="contacts-list"></div>
+
+            <button id="add-contact-button">ADD CONTACT</button>
+
+        </section>
+
+
+        <!-- SAVED PROJECTS PAGE -->
+        <section id="projects-page" class="content-page" hidden>
+
+            <div class="page-header">
+                <h2>Project Saved</h2>
+                <button class="back-button" data-back-home>← BACK</button>
+            </div>
+
+            <div id="projects-list"></div>
+
+            <button id="add-project-button">ADD PROJECT</button>
+
+        </section>
+
+
+        <!-- MONTAGE PAGE -->
+        <section id="montage-page" class="content-page" hidden>
+
+            <div class="montage-header">
+                <button id="montage-back-button">← BACK TO MARAM</button>
+
+                <div>
+                    <h2>MARAM / VIDEO STUDIO PRO</h2>
+                    <p>MEDIA • TIMELINE • TRIM • AUDIO • EXPORT</p>
+                </div>
+
+                <span id="montage-status">READY</span>
+            </div>
+
+            <div class="montage-body">
+
+                <aside class="media-library">
+                    <h3>MEDIA LIBRARY</h3>
+
+                    <button id="import-video-button">＋ IMPORT VIDEO</button>
+                    <button id="import-audio-button">＋ IMPORT AUDIO</button>
+                    <button id="remove-clip-button">REMOVE SELECTED</button>
+
+                    <input
+                        type="file"
+                        id="video-file-input"
+                        accept="video/mp4,video/quicktime,video/x-matroska,video/*"
+                        multiple
+                        hidden
+                    >
+
+                    <input
+                        type="file"
+                        id="audio-file-input"
+                        accept="audio/*"
+                        hidden
+                    >
+
+                    <ul id="clip-list"></ul>
+
+                    <div class="clip-order">
+                        <button id="move-clip-up">↑ MOVE UP</button>
+                        <button id="move-clip-down">↓ MOVE DOWN</button>
+                    </div>
+
+                    <p id="audio-label">Audio: none</p>
+
+                    <button id="clear-media-button">CLEAR ALL MEDIA</button>
+                </aside>
+
+
+                <div class="montage-editor">
+
+                    <div class="video-preview">
+                        <video id="preview-video" controls hidden></video>
+                        <p id="preview-placeholder">IMPORT A VIDEO TO START</p>
+
+                        <div id="video-time">
+                            00:00:00.000 / 00:00:00.000
+                        </div>
+                    </div>
+
+                    <div class="playback-controls">
+                        <button id="seek-backward-button">◀ -1s</button>
+                        <button id="play-button">▶ PLAY</button>
+                        <button id="pause-button">PAUSE</button>
+                        <button id="seek-forward-button">+1s ▶</button>
+
+                        <input
+                            type="range"
+                            id="seek-slider"
+                            min="0"
+                            max="100"
+                            value="0"
+                            step="0.01"
+                        >
+                    </div>
+
+                    <div class="clip-trim">
+                        <h3>CLIP TRIM</h3>
+                        <p id="clip-info">Select a clip from the media library</p>
+
+                        <label for="trim-start">START (seconds)</label>
+                        <input id="trim-start" type="number" min="0" step="0.001" value="0">
+
+                        <label for="trim-end">END (seconds)</label>
+                        <input id="trim-end" type="number" min="0" step="0.001" value="0">
+
+                        <label for="resolution-select">RESOLUTION</label>
+                        <select id="resolution-select">
+                            <option>720p (1280×720)</option>
+                            <option selected>1080p (1920×1080)</option>
+                            <option>1440p (2560×1440)</option>
+                            <option>4K (3840×2160)</option>
+                        </select>
+
+                        <label for="quality-select">QUALITY</label>
+                        <select id="quality-select">
+                            <option>Fast</option>
+                            <option>Balanced</option>
+                            <option selected>High</option>
+                            <option>Maximum</option>
+                        </select>
+
+                        <div class="trim-actions">
+                            <button id="apply-trim-button">APPLY TRIM</button>
+                            <button id="reset-trim-button">RESET TRIM</button>
+                            <button id="export-video-button">EXPORT VIDEO</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="montage-footer">
+                TIMELINE / clip order = export order / MP4 • H.264
+                <progress id="export-progress"></progress>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
+```
